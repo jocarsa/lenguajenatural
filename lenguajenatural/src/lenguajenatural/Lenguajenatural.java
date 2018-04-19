@@ -5,6 +5,9 @@
  */
 package lenguajenatural;
 
+import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,7 +47,24 @@ public class Lenguajenatural extends JFrame {
      private void botonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         System.out.println("Has tocado el boton");
-        salida.setText("Este es un texto que se pone dinamicamente");
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver") ;
+             Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost:3306/chatbot", "chatbot", "chatbot") ;
+             Statement stmt =  conn.createStatement() ;
+             ResultSet rs;
+
+             rs = stmt.executeQuery("SELECT * FROM webchat_lines LIMIT 1");
+             while ( rs.next() ) {
+                 String mensaje = rs.getString("text");
+                 salida.setText(mensaje);
+             }
+             conn.close();
+         } catch (Exception e) {
+             System.err.println("Got an exception! ");
+             System.err.println(e.getMessage());
+         }
+
     }  
      
     /**
