@@ -30,20 +30,34 @@ public class Lenguajenatural extends JFrame {
         boton = new JButton("Envia");
         boton.setBounds(30,100,150,20);
         add(boton);
+        boton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActionPerformed(evt);
+            }
+        });
         
         salida = new JLabel("salida");
          salida.setBounds(30,150,150,20);
         add(salida);
      }
      
+     private void botonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        System.out.println("Has tocado el boton");
+        salida.setText("Este es un texto que se pone dinamicamente");
+    }  
+     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
          Lenguajenatural ventana = new Lenguajenatural();
         ventana.setBounds(50, 50, 300, 400);
         ventana.setVisible(true);
+        
+        // Voy a comprobar que puedo hacer cosas con el boton
     }
     
 }
