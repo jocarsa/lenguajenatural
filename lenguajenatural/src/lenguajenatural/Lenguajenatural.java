@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 package lenguajenatural;
 
 import java.sql.*;
@@ -13,17 +13,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-    
 
 public class Lenguajenatural extends JFrame {
-        private JLabel rotulo;
-        private JTextField entrada;
-        private JLabel salida;
-        private JButton boton;
+    private JLabel rotulo;
+    private JTextField entrada;
+    private JLabel salida;
+    private JButton boton;
     
-     public Lenguajenatural(){
-         rotulo = new JLabel("Chatbot Raulero");
-         rotulo.setBounds(30,50,150,20);
+    public Lenguajenatural(){
+        //Constructor en el que creamos la ventana con sus botones
+        rotulo = new JLabel("Chatbot Raulero");
+        rotulo.setBounds(30,50,150,20);
         add(rotulo);
         
         entrada = new JTextField();
@@ -40,19 +40,19 @@ public class Lenguajenatural extends JFrame {
         });
         
         salida = new JLabel("salida");
-         salida.setBounds(30,150,150,20);
+        salida.setBounds(30,150,150,20);
         add(salida);
-     }
-     
-     private void botonActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    }
+    
+    private void botonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // Accion a ejecutar cuando pulsamos el boton
         System.out.println("Has tocado el boton");
         
         try {
             // Como Raul dice que igual hasta hay un java.sql ya dentro de Java, especifico la libreria que voy a usar
             Class.forName("com.mysql.jdbc.Driver") ;
             // Creo una conexión con la base de datos introduciendo toda la info
-             Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost:3306/chatbot", "chatbot", "chatbot") ;
+             Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost:3306/datoschatbot", "chatbot", "chatbot") ;
              // En la conexión creo una petición
              Statement stmt =  conn.createStatement() ;
              // Contenedor de información correspondiente a un array que contendrá el resultado de la petición
